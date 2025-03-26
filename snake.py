@@ -30,23 +30,19 @@ clock = pygame.time.Clock()
 # Font for score display
 font = pygame.font.Font(None, 30)
 
-
 def draw_snake(snake):
     """Draw the snake on the screen."""
     for segment in snake:
         pygame.draw.rect(screen, GREEN, (segment[0], segment[1], CELL_SIZE, CELL_SIZE))
 
-
 def draw_food(food):
     """Draw the food (apple) on the screen."""
     pygame.draw.rect(screen, RED, (food[0], food[1], CELL_SIZE, CELL_SIZE))
-
 
 def get_new_food_position(snake):
     """Find a new position for the food that is not occupied by the snake."""
     empty_spaces = [(x, y) for x in range(0, WIDTH, CELL_SIZE) for y in range(0, HEIGHT, CELL_SIZE) if (x, y) not in snake]
     return random.choice(empty_spaces) if empty_spaces else None
-
 
 def main():
     running = True
